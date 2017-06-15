@@ -6,7 +6,7 @@
  * Time: 6:45 PM
  */
 
-<?php
+
 /*
 Plugin Name: navBoxes
 Description: Navigation boxes.
@@ -22,7 +22,7 @@ Author: Brian Andrews
  *
  */
 if ( !class_exists('navBoxes' ) ) {
-  class bootstrapSlider
+  class navBoxes
   {
     /**
      * Init function.
@@ -51,7 +51,7 @@ if ( !class_exists('navBoxes' ) ) {
       register_activation_hook(__FILE__, 'navBoxes_activation');
 
       /**
-       * Remove our database table on deactivation for storing sliders.
+       * Remove our database table on deactivation for storing navBoxes.
        *
        */
       // TODO: move this to uninstall instead of deactivation. . .
@@ -71,26 +71,29 @@ if ( !class_exists('navBoxes' ) ) {
        * Add our style sheets.
        *
        */
-      function bootstrapSlider_styles()
+      function navBoxes_styles()
       {
         // Register the style like this for a plugin:
-        wp_register_style('bootstrap', plugins_url('/public/css/bootstrap.min.css', __FILE__), array(), '20120208', 'all');
+        wp_register_style('nav-styles', plugins_url('/public/css/nav-styles.css', __FILE__), array(), '1', 'all');
 
         // For either a plugin or a theme, you can then enqueue the style:
-        wp_enqueue_style('bootstrap');
+        wp_enqueue_style('nav-styles');
       }
-      add_action('wp_enqueue_scripts', 'bootstrapSlider_styles');
+      add_action('wp_enqueue_scripts', 'navBoxes_styles');
+
 
       /**
        * Add our scripts.
        *
        */
-      function bootstrapSlider_scripts()
+      /*
+      function navBoxes_scripts()
       {
         wp_register_script('bootstrap', plugins_url('/public/js/bootstrap.min.js', __FILE__));
         wp_enqueue_script('bootstrap');
       }
-      add_action('wp_enqueue_scripts', 'bootstrapSlider_scripts');
+      add_action('wp_enqueue_scripts', 'navBoxes_scripts');
+      */
 
       /**
        * Add our Settings menu to Admin
