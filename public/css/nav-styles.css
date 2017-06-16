@@ -97,6 +97,7 @@
     overflow: hidden;
     color: #666;
     font-size: .78em;
+    line-height: 10px;
     text-transform: uppercase;
     position: absolute;
     bottom: 5%;
