@@ -102,7 +102,7 @@ if ( !class_exists('navBoxes' ) ) {
        *
        */
       // TODO : add our backend.
-      //require 'admin/options.php';
+      require 'admin/options.php';
 
       /**
        * Add our shortcode
@@ -123,6 +123,30 @@ if ( !class_exists('navBoxes' ) ) {
         add_shortcode('navBoxes', 'navBoxes_shortcode');
       }
       add_action('init', 'navBoxes_shortcodes_init');
+
+      /**
+       * Add our custom post type.
+       *
+       */
+      function navBoxes_create_posttype()
+      {
+        register_post_type('navBoxes',
+            // CPT Options
+            array(
+                'labels' => array(
+                    'name' => __('NavBoxes'),
+                    'singular_name' => __('NavBox')
+                ),
+                'public' => true,
+                'has_archive' => true,
+                'rewrite' => array('slug' => 'navboxes'),
+                'show_in_menu' => 'navBoxes',
+                'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+                'hierarchical' => false,
+            )
+        );
+      }
+      add_action('init', 'navBoxes_create_posttype');
 
     }
 
