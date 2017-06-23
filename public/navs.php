@@ -20,7 +20,7 @@
     $the_query = new WP_Query($args);
     if ( $the_query->have_posts() ) :
     while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        <a class="nav-card" href="#">
+        <a class="nav-card" href="<?php echo the_permalink(); ?>">
             <?php
             $thumb_id = get_post_thumbnail_id();
             $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
@@ -32,7 +32,7 @@
                 </span>
             </span>
           <span class="nav-card-summary">
-                    <?php the_content(); ?>
+                    <?php echo wp_trim_words(get_the_content(), 40, '...'); ?>
                 </span>
           <span class="nav-card-meta">
                     <?php echo get_the_date('F j, Y'); ?>
