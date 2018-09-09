@@ -28,7 +28,7 @@ if ( !class_exists('navBoxes' ) ) {
      * Init function.
      *
      */
-    function init()
+    public static function init()
     {
       function navBoxes_activation()
       {

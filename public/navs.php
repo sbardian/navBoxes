@@ -31,10 +31,10 @@
                     <h3><?php the_title(); ?></h3>
                 </span>
             </span>
-          <span class="nav-card-summary">
+            <span class="nav-card-summary">
                     <?php echo wp_trim_words(get_the_content(), 40, '...'); ?>
                 </span>
-          <span class="nav-card-meta">
+            <span class="nav-card-meta">
                     <?php echo get_the_date('F j, Y'); ?>
                 </span>
         </a>

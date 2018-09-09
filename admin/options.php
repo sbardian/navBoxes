@@ -20,6 +20,39 @@ $default_options = array(
 add_option('navBoxes-Settings', $default_options);
 
 /**
+ * Register our settings.
+ */
+function navBoxes_register_settings() {
+  register_setting('navBoxes-Settings', 'navBoxes-Settings');
+}
+add_action( 'admin_init', 'navBoxes_register_settings' );
+
+/**
+ * Add our menu and submenu to the Admin Dashboard.
+ */
+function navBoxesMenu()
+{
+  add_menu_page(
+      'Edit NavBoxes',
+      'NavBoxes',
+      'manage_options',
+      'navBoxes',
+      null,
+      null,
+      null
+  );
+  add_submenu_page(
+      'navBoxes',
+      'navBoxes Settings',
+      'Settings',
+      'manage_options',
+      'navBoxesSettings',
+      navBoxes_RenderSettings
+  );
+}
+add_action('admin_menu', 'navBoxesMenu');
+
+/**
  * Render our settings page.
  *
  */
@@ -51,37 +84,4 @@ function NavBoxes_RenderSettings() { ?>
   </form>
   <?php
 }
-
-/**
- * Register our settings.
- */
-function navBoxes_register_settings() {
-  register_setting('navBoxes-Settings', 'navBoxes-Settings');
-}
-add_action( 'admin_init', 'navBoxes_register_settings' );
-
-/**
- * Add our menu and submenu to the Admin Dashboard.
- */
-function navBoxesMenu()
-{
-  add_menu_page(
-      'Edit NavBoxes',
-      'NavBoxes',
-      'manage_options',
-      'navBoxes',
-      navBoxesSettings,
-      null,
-      null
-  );
-  add_submenu_page(
-      'navBoxes',
-      'navBoxes Settings',
-      'Settings',
-      'manage_options',
-      'navBoxesSettings',
-      navBoxes_RenderSettings
-  );
-}
-add_action('admin_menu', 'navBoxesMenu');
 ?>
