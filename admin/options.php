@@ -30,6 +30,8 @@ add_action( 'admin_init', 'navBoxes_register_settings' );
 /**
  * Add our menu and submenu to the Admin Dashboard.
  */
+add_action('admin_menu', 'navBoxesMenu');
+
 function navBoxesMenu()
 {
   add_menu_page(
@@ -50,7 +52,6 @@ function navBoxesMenu()
       navBoxes_RenderSettings
   );
 }
-add_action('admin_menu', 'navBoxesMenu');
 
 /**
  * Render our settings page.
