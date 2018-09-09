@@ -49,7 +49,7 @@ function navBoxesMenu()
       'Settings',
       'manage_options',
       'navBoxesSettings',
-      navBoxes_RenderSettings
+      'navBoxes_RenderSettings'
   );
 }
 
